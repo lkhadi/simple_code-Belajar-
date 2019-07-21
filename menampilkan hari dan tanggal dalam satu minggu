@@ -1,0 +1,23 @@
+    <?php 
+$tanggal = date('Y-m-d');
+$d = new DateTime($tanggal.' this week');
+$days = array();
+$intlDays = array(
+    'Monday' => 'Senin',
+    'Tuesday' => 'Selasa',
+    'Wednesday' => 'Rabu',
+    'Thursday' => 'Kamis',
+    'Friday' => 'Jumat',
+    'Saturday' => 'Sabtu',
+    'Sunday' => 'Minggu'
+);
+
+for ($i = 0; $i < 7; $i++) {
+    $date = $d->format('j');
+    $output = $d->format('l');
+    $output = str_replace(array_keys($intlDays), $intlDays, $output);
+    $days[$date] = $output;
+    $d->add(new DateInterval('P1D'));
+}
+print_r($days);
+	?>
